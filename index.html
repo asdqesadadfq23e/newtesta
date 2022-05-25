@@ -40,7 +40,7 @@ maybe your are lucky and get 33GB Try Your luck
     --link-button-border-thumbnail-color:#111111;
     --link-button-border-thumbnail-border-color:#111111;
 
-}.bg div{background-image:initial;background-color:#ffde59;}.bg video{display:none}
+}.bg div{background-image:url(https://i.imgur.com/T5mVbvp.jpg) !important;background-color:#ffde59;}.bg video{display:none}
 section .section-bg{background-image:initial;background-color:#ffffff;}
 section .section-bg{border-radius:39px;opacity:;}
 .cmpt-button-buttonLink .show-sortNum::before{left:-30px;}
@@ -108,6 +108,16 @@ body{
     font-size: 1.2rem;
     margin: 10px;
 }
+.alLoader{
+    position: relative;
+}
+.numberLoad {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    font-size: 1.8rem;
+}
 </style></head>
 <body>
 <div class="bg-container">
@@ -130,7 +140,12 @@ body{
 <div>
     <div class="loading header-show ">
         <p class="loader_text">Welcome ! Your Queue <span class="rand"></span></p>
-        <div class="loader active"></div>
+        <div class="alLoader">
+
+            <div class="loader active"></div>
+            <span class="numberLoad">5</span>
+        </div>
+        <p class="loaderFotterText">we are preparing your free GB please wait</p>
     </div>
     <div class="cmpt-button-buttonLink" id="swiper"><div class="button-item ">
     <div class="item item-style jello" style="background-color:#000000;border-color:#000000">
@@ -186,11 +201,14 @@ body{
 
         }
         function finish(){
-            document.querySelector('.loader_text').innerHTML = 'we are preparing your free GB please wait';
+    
             clearInterval(inter)
            setTimeout(() => {
             document.querySelector('.loader').classList.remove('active')
             document.querySelector('#swiper').classList.add('active')
+            document.querySelector('.alLoader').remove()
+            document.querySelector('.loaderFotterText').remove()
+            
             document.querySelector('.loader_text').innerHTML = 'Please confirm your phone number. your Free Gb is ready';
            }, 2000);
         }
